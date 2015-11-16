@@ -1,0 +1,10 @@
+import com.github.jlmelville.dbsmoketest.H2SmokeTest
+
+task checkDb(type: H2SmokeTest) {
+    url = "jdbc:h2:~/test;IFEXISTS=TRUE"
+    username = "sa"
+    password = ""
+    driverRepo = "https://repo1.maven.org/maven2/"
+    errorMessage = "DB doesn't seem to be up"
+    stopBuildOnFailure = false
+}
