@@ -21,7 +21,7 @@ task checkDb(type: H2SmokeTest) {
 }
 ```
 
-if you can install H2 and get as far as logging in the 
+If you can install H2 and get as far as logging in the 
 [quickstart guide](http://www.h2database.com/html/quickstart.html), then you should be able to successfully smoke test
 the test DB with:
 
@@ -35,11 +35,10 @@ archived.
 
 ## Why?
 In his excellent book Gradle in Action, Benjamin Muschko provides some useful tasks for smoke testing web apps via HTTP.
-You can extend these ideas quite easily to attempting to smoke test a database by connecting via JDBC and then executing
-a simple query.
+You can extend these ideas quite easily to smoke testing a database by connecting via JDBC and then executing a simple query.
 
 What makes this a bit trickier is that you need to make sure that the JDBC drivers get loaded at the correct time. A 
-straightforward solution is to add the following the your `build.gradle` whenever you want to load a JDBC driver:
+straightforward solution is to add the following to your `build.gradle` whenever you want to load a JDBC driver:
 
 ```Gradle
 repositories {
@@ -74,7 +73,7 @@ and `dependencies` blocks into the buildSrc `build.gradle`, because they need to
 when it's built. So you would need to keep them littering your build script, and now there's not even anything terribly
 obvious to indicate why they're there.
 
-My solution was to eschew the declarative approach and use the Gradle API to load things from a private method in the
+My solution was to eschew the declarative approach and use the Gradle API to load things from a method in the
 custom task. This was originally just a gist, but there are just enough moving parts that I don't know if anyone
 could reproduce this from just some snippet of codes. Hence this project.
 
